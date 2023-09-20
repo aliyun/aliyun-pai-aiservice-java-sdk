@@ -14,4 +14,6 @@ AI 写真训练，写真制作查看 [AIGCImageTest](src/test/java/com/aliyun/op
 
 AI 写真训练，制作相关接口查看 [AigcImagesApiTest](src/test/java/com/aliyun/openservices/aiservice/api/AigcImagesApiTest.java)
 
-多媒体分析接口查看  [AiServiceImageApiTest](src/test/java/com/aliyun/openservices/aiservice/api/AiServiceImageApiTest.java)
+多媒体分析图片接口查看  [AiServiceImageApiTest](src/test/java/com/aliyun/openservices/aiservice/api/AiServiceImageApiTest.java)
+
+多媒体分析视频接口查看  [AiServiceVideoApiTest](src/test/java/com/aliyun/openservices/aiservice/api/AiServiceVideoApiTest.java)
