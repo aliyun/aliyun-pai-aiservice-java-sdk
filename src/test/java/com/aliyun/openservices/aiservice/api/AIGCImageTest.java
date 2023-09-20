@@ -16,7 +16,7 @@ public class AIGCImageTest {
         String host  = Constants.host;
         String appId = Constants.appId;
         String token = Constants.token;
-         apiClient = new ApiClient(host, appId, token);
+        apiClient = new ApiClient(host, appId, token);
     }
     public static AigcImagesApi createApi() {
         return  new AigcImagesApi(apiClient);

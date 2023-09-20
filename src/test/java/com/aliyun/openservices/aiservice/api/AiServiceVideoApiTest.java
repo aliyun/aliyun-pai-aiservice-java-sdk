@@ -25,6 +25,7 @@ import org.junit.Test;
 import org.junit.Ignore;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 
@@ -44,6 +45,24 @@ public class AiServiceVideoApiTest {
         String token = Constants.token;
         ApiClient apiClient = new ApiClient(host, appId, token);
         api = new AiServiceVideoApi(apiClient);
+    }
+
+    /**
+     * 视频多模态接口
+     *
+     * @throws Exception
+     *          if the Api call fails
+     */
+    @Test
+    public void multiModalClassifyTest() throws Exception {
+        String videoUrl = "http://v1.keepcdn.com/tweet-entry-video/5f9eaf52d9e7c4253a50f3d8/2023/08/28/59f9ff9f-9eea-42a2-a6f2-b352fb31d956/169317149931964ebbf2bcd76560001b6a3f0.mp4";
+        List<String> images = Arrays.asList();
+
+        String text = "标题: 胜利公园晨跑打卡。 内容: ";
+        AsyncVideoJobResponse response = api.multiModalClassify(videoUrl, images, text);
+
+        System.out.println(response);
+        System.out.println(response.getJobId());
     }
 
     /**

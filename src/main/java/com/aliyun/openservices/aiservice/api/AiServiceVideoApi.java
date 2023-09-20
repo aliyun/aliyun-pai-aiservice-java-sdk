@@ -281,6 +281,44 @@ public class AiServiceVideoApi {
     }
 
     /**
+     * 视频多模态接口
+     *
+     * @param videoUrl 视频地址 (required)
+     * @param images 图片列表 (required)
+     * @param text 视频内容 (required)
+     *
+     * @return Response
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public AsyncVideoJobResponse multiModalClassify(String videoUrl, List<String> images, String text ) throws ApiException {
+        return multiModalClassify(videoUrl, images, text, "", null);
+    }
+
+    /**
+     * 视频多模态接口
+     *
+     * @param videoUrl 视频地址 (required)
+     * @param images 图片列表 (required)
+     * @param text 视频内容 (required)
+     * @param modelName 模型名称
+     * @param config 模型配置
+     *
+     * @return Response
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public AsyncVideoJobResponse multiModalClassify(String videoUrl,  List<String> images, String text, String modelName, Map<String, Object> config) throws ApiException {
+        VideoRequest body = new VideoRequest();
+        body.setModelName(modelName);
+        body.setConfigure(config);
+        body.setVideoUrl(videoUrl);
+        body.setText(text);
+        body.setImages(images);
+        body.setAction("MultiModalClassify");
+        ApiResponse<AsyncVideoJobResponse> resp = aiModelVideoWithHttpInfo(body);
+        return resp.getData();
+    }
+
+    /**
      * 批量视频标签分类接口
      *
      * @param videos 视频地址列表 (required)

@@ -49,7 +49,7 @@ public class AiServiceJobApiTest {
      */
     @Test
     public void getAsyncJobTest() throws Exception {
-        Integer jobId = 11753;
+        Integer jobId = 12187;
         AsyncJobResponse response = api.getAsyncJob(jobId);
 
         if (response.getData().get("job").getState() == AsyncJobState.JOB_STATE_WAIT) {
@@ -57,6 +57,7 @@ public class AiServiceJobApiTest {
         } else if (response.getData().get("job").getState() == AsyncJobState.JOB_STATE_SUCCESS) {
             System.out.println("job success");
             System.out.println(response);
+            System.out.println(response.getData().get("job"));
         } else {
             System.out.println("job fail");
             System.out.println(response);

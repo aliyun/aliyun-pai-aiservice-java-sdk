@@ -12,6 +12,7 @@
 
 package com.aliyun.openservices.aiservice.model;
 
+import java.util.List;
 import java.util.Objects;
 
 import com.google.gson.annotations.SerializedName;
@@ -35,6 +36,12 @@ public class VideoRequest {
 
   @SerializedName("model_name")
   private String modelName = null;
+
+  @SerializedName("text")
+  private String text = null;
+
+  @SerializedName("images")
+  private List<String> images = null;
 
   @SerializedName("configure")
   private Object configure = null;
@@ -93,6 +100,22 @@ public class VideoRequest {
     this.videoTitle = videoTitle;
   }
 
+  public String getText() {
+    return text;
+  }
+
+  public void setText(String text) {
+    this.text = text;
+  }
+
+  public List<String> getImages() {
+    return images;
+  }
+
+  public void setImages(List<String> images) {
+    this.images = images;
+  }
+
   public VideoRequest modelName(String modelName) {
     this.modelName = modelName;
     return this;
@@ -142,13 +165,15 @@ public class VideoRequest {
     return Objects.equals(this.action, videoRequest.action) &&
         Objects.equals(this.videoUrl, videoRequest.videoUrl) &&
         Objects.equals(this.videoTitle, videoRequest.videoTitle) &&
+        Objects.equals(this.text, videoRequest.text) &&
+        Objects.equals(this.images, videoRequest.images) &&
         Objects.equals(this.modelName, videoRequest.modelName) &&
         Objects.equals(this.configure, videoRequest.configure);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(action, videoUrl, videoTitle, modelName, configure);
+    return Objects.hash(action, videoUrl, videoTitle, text, images, modelName, configure);
   }
 
 
@@ -161,6 +186,8 @@ public class VideoRequest {
     sb.append("    videoUrl: ").append(toIndentedString(videoUrl)).append("\n");
     sb.append("    videoTitle: ").append(toIndentedString(videoTitle)).append("\n");
     sb.append("    modelName: ").append(toIndentedString(modelName)).append("\n");
+    sb.append("    text: ").append(toIndentedString(text)).append("\n");
+    sb.append("    images: ").append(toIndentedString(images)).append("\n");
     sb.append("    configure: ").append(toIndentedString(configure)).append("\n");
     sb.append("}");
     return sb.toString();
