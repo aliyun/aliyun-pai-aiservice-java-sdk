@@ -9,9 +9,10 @@
   <url>>http://maven.apache.org</url>
   <description>SDK for pai aiservice client service</description>
   <scm>
-    <connection>scm:git:git@github.com:swagger-api/swagger-codegen.git</connection>
-    <developerConnection>scm:git:git@github.com:swagger-api/swagger-codegen.git</developerConnection>
-    <url>https://github.com/swagger-api/swagger-codegen</url>
+    <tag>master</tag>
+    <url>https://github.com/aliyun/aliyun-pai-aiservice-java-sdk</url>
+    <connection>scm:git@github.com:aliyun/aliyun-pai-aiservice-java-sdk.git</connection>
+    <developerConnection>scm:git@github.com:aliyun/aliyun-pai-aiservice-java-sdk.git</developerConnection>
   </scm>
   <prerequisites>
     <maven>2.2.0</maven>
@@ -31,6 +32,24 @@
       <name>PAI-AIService</name>
     </developer>
   </developers>
+
+  <distributionManagement>
+    <repository>
+      <id>oss</id>
+      <url>
+        https://oss.sonatype.org/service/local/staging/deploy/maven2
+      </url>
+    </repository>
+    <snapshotRepository>
+      <id>oss</id>
+      <uniqueVersion>false</uniqueVersion>
+      <url>
+        https://oss.sonatype.org/content/repositories/snapshots
+      </url>
+    </snapshotRepository>
+  </distributionManagement>
+
+
 
   <build>
     <plugins>
