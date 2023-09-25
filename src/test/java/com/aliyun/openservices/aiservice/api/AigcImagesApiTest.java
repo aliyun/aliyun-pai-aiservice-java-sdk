@@ -14,6 +14,7 @@ package com.aliyun.openservices.aiservice.api;
 
 import com.aliyun.openservices.aiservice.ApiClient;
 import com.aliyun.openservices.aiservice.model.AIGCCreatRequest;
+import com.aliyun.openservices.aiservice.model.AIGCImageCheckResponse;
 import com.aliyun.openservices.aiservice.model.AIGCImageCreateResponse;
 import com.aliyun.openservices.aiservice.model.AIGCTrainRequest;
 import com.aliyun.openservices.aiservice.model.AIGCImageTrainResponse;
@@ -56,9 +57,11 @@ public class AigcImagesApiTest {
                 "https://pai-aigc-photog-bj.oss-cn-beijing.aliyuncs.com/photog/user_images/foto/train/0.jpg",
                 "http://47.95.234.175/assets/8db2c2ada33a403351447a990aaa2cda.jpg");
 
-        Response response = api.aigcImagesCheck(images);
+        AIGCImageCheckResponse response = api.aigcImagesCheck(images);
 
-        System.out.println(response.getData());
+        System.out.println(response);
+        System.out.println(response.getCheckResults());
+        System.out.println(response.getData().getImages());
     }
     /**
      * aigc预测

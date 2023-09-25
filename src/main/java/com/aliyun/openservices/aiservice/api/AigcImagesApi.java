@@ -14,6 +14,7 @@ package com.aliyun.openservices.aiservice.api;
 
 import com.aliyun.openservices.aiservice.model.AIGCCheckRequest;
 import com.aliyun.openservices.aiservice.model.AIGCCreatRequest;
+import com.aliyun.openservices.aiservice.model.AIGCImageCheckResponse;
 import com.aliyun.openservices.aiservice.model.AIGCImageCreateResponse;
 import com.aliyun.openservices.aiservice.model.AIGCTrainRequest;
 import com.aliyun.openservices.aiservice.model.AIGCImageTrainResponse;
@@ -126,15 +127,11 @@ public class AigcImagesApi {
      *
      * @param images aigc 检测的图片列表 (required)
      *
-     * @return Response
+     * @return AIGCImageCheckResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public Response aigcImagesCheck(List<String> images) throws ApiException {
-        AIGCCheckRequest body = new AIGCCheckRequest();
-        body.setImages(images);
-        body.setAction("AIGCImageCheck");
-        ApiResponse<Response> resp = aigcImagesCheckPostWithHttpInfo(body);
-        return resp.getData();
+    public AIGCImageCheckResponse aigcImagesCheck(List<String> images) throws ApiException {
+        return aigcImagesCheck(images, "", null);
     }
     /**
      * aigc图像检测
@@ -146,13 +143,13 @@ public class AigcImagesApi {
      * @return Response
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public Response aigcImagesCheck(List<String> images, String modelName, Map<String, Object> config) throws ApiException {
+    public AIGCImageCheckResponse aigcImagesCheck(List<String> images, String modelName, Map<String, Object> config) throws ApiException {
         AIGCCheckRequest body = new AIGCCheckRequest();
         body.setImages(images);
         body.setModelName(modelName);
         body.setAction("AIGCImageCheck");
         body.setConfigure(config);
-        ApiResponse<Response> resp = aigcImagesCheckPostWithHttpInfo(body);
+        ApiResponse<AIGCImageCheckResponse> resp = aigcImagesCheckPostWithHttpInfo(body);
         return resp.getData();
     }
 
@@ -160,11 +157,11 @@ public class AigcImagesApi {
      * aigc图像检测
      * 
      * @param body aigc检测body (required)
-     * @return Response
+     * @return AIGCImageCheckResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public Response aigcImagesCheckPost(AIGCCheckRequest body) throws ApiException {
-        ApiResponse<Response> resp = aigcImagesCheckPostWithHttpInfo(body);
+    public AIGCImageCheckResponse aigcImagesCheckPost(AIGCCheckRequest body) throws ApiException {
+        ApiResponse<AIGCImageCheckResponse> resp = aigcImagesCheckPostWithHttpInfo(body);
         return resp.getData();
     }
 
@@ -175,9 +172,9 @@ public class AigcImagesApi {
      * @return ApiResponse&lt;Response&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Response> aigcImagesCheckPostWithHttpInfo(AIGCCheckRequest body) throws ApiException {
+    public ApiResponse<AIGCImageCheckResponse> aigcImagesCheckPostWithHttpInfo(AIGCCheckRequest body) throws ApiException {
         com.squareup.okhttp.Call call = aigcImagesCheckPostValidateBeforeCall(body, null, null);
-        Type localVarReturnType = new TypeToken<Response>(){}.getType();
+        Type localVarReturnType = new TypeToken<AIGCImageCheckResponse>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
 
