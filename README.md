@@ -5,7 +5,13 @@
 
 ## 安装
 
-待更新
+```
+<dependency>
+  <groupId>com.aliyun.openservices.aiservice</groupId>
+  <artifactId>aiservice-sdk</artifactId>
+  <version>1.0.0</version>
+</dependency>
+```
 
 
 ## 使用方式
