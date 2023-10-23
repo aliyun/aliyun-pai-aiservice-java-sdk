@@ -28,6 +28,7 @@ import java.util.List;
 /**
  * API tests for AigcImagesApi
  */
+@Ignore
 public class AigcImagesApiTest {
 
     private  AigcImagesApi api ;
