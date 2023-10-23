@@ -3,13 +3,15 @@
 
 [多媒体分析文档](https://help.aliyun.com/zh/pai/user-guide/multimedia-analysis?spm=a2c4g.11186623.0.0.31a419d5APYtKi)
 
+[AI写真文档](https://help.aliyun.com/zh/pai/user-guide/overview-of-ai-portraits?spm=a2c4g.11174283.0.0.34165e0fdiZgrH)
+
 ## 安装
 
 ```
 <dependency>
   <groupId>com.aliyun.openservices.aiservice</groupId>
   <artifactId>aiservice-sdk</artifactId>
-  <version>1.0.0</version>
+  <version>1.0.1</version>
 </dependency>
 ```
 

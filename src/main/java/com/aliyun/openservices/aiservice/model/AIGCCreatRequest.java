@@ -30,6 +30,9 @@ public class AIGCCreatRequest {
   @SerializedName("model_id")
   private String modelId = null;
 
+  @SerializedName("model_ids")
+  private String[] modelIds = null;
+
   @SerializedName("model_name")
   private String modelName = null;
 
@@ -62,6 +65,11 @@ public class AIGCCreatRequest {
     return this;
   }
 
+  public AIGCCreatRequest modelIds(String[] modelIds) {
+    this.modelIds = modelIds;
+    return this;
+  }
+
    /**
    * Get modelId
    * @return modelId
@@ -71,8 +79,16 @@ public class AIGCCreatRequest {
     return modelId;
   }
 
+  public String[] getModelIds() {
+    return modelIds;
+  }
+
   public void setModelId(String modelId) {
     this.modelId = modelId;
+  }
+
+  public void setModelIds(String[] modelIds) {
+    this.modelIds = modelIds;
   }
 
   public AIGCCreatRequest modelName(String modelName) {
@@ -141,6 +157,7 @@ public class AIGCCreatRequest {
     AIGCCreatRequest aiGCCreatRequest = (AIGCCreatRequest) o;
     return Objects.equals(this.action, aiGCCreatRequest.action) &&
         Objects.equals(this.modelId, aiGCCreatRequest.modelId) &&
+        Objects.equals(this.modelIds, aiGCCreatRequest.modelIds) &&
         Objects.equals(this.modelName, aiGCCreatRequest.modelName) &&
         Objects.equals(this.templateImage, aiGCCreatRequest.templateImage) &&
         Objects.equals(this.configure, aiGCCreatRequest.configure);
@@ -148,7 +165,7 @@ public class AIGCCreatRequest {
 
   @Override
   public int hashCode() {
-    return Objects.hash(action, modelId, modelName, templateImage, configure);
+    return Objects.hash(action, modelId, modelIds, modelName, templateImage, configure);
   }
 
 
@@ -159,6 +176,7 @@ public class AIGCCreatRequest {
     
     sb.append("    action: ").append(toIndentedString(action)).append("\n");
     sb.append("    modelId: ").append(toIndentedString(modelId)).append("\n");
+    sb.append("    modelIds: ").append(toIndentedString(modelIds)).append("\n");
     sb.append("    modelName: ").append(toIndentedString(modelName)).append("\n");
     sb.append("    templateImage: ").append(toIndentedString(templateImage)).append("\n");
     sb.append("    configure: ").append(toIndentedString(configure)).append("\n");

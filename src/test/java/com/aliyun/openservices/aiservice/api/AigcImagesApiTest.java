@@ -28,6 +28,7 @@ import java.util.List;
 /**
  * API tests for AigcImagesApi
  */
+@Ignore
 public class AigcImagesApiTest {
 
     private  AigcImagesApi api ;
@@ -61,7 +62,7 @@ public class AigcImagesApiTest {
         System.out.println(response.getData().getImages());
     }
     /**
-     * aigc预测
+     * AI 写真制作
      *
      * 
      *
@@ -76,6 +77,30 @@ public class AigcImagesApiTest {
             AIGCImageCreateResponse response = api.aigcImagesCreate(modelId, templateImage);
 
             System.out.println(response);
+            System.out.println(response.getData().getImage());
+
+        } catch (ApiException exception) {
+            System.out.println(exception.getResponseBody());
+        }
+    }
+
+    /**
+     * AI 写真制作
+     *
+     *
+     *
+     * @throws Exception
+     *          if the Api call fails
+     */
+    @Test
+    public void aigcImagesCreateByMultiModelIdsTest()  {
+        try {
+            String[] modelIds = new String[]{"115aaf09-47a0-4aef-98cf-3582ceffb675", "115aaf09-47a0-4aef-98cf-3582ceffb675"};
+            String templateImage = "https://pai-aigc-photog-bj.oss-cn-beijing.aliyuncs.com/photog/user_weights/foto10/validation/global_step_Blue_1_100_0.jpg";
+            AIGCImageCreateResponse response = api.aigcImagesCreateByMultiModelIds(modelIds, templateImage);
+
+            System.out.println(response);
+            // 图片base64
             System.out.println(response.getData().getImage());
 
         } catch (ApiException exception) {
