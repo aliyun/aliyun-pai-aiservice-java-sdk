@@ -13,12 +13,10 @@
 package com.aliyun.openservices.aiservice.api;
 
 import com.aliyun.openservices.aiservice.ApiClient;
-import com.aliyun.openservices.aiservice.model.AIGCCreatRequest;
+import com.aliyun.openservices.aiservice.ApiException;
 import com.aliyun.openservices.aiservice.model.AIGCImageCheckResponse;
 import com.aliyun.openservices.aiservice.model.AIGCImageCreateResponse;
-import com.aliyun.openservices.aiservice.model.AIGCTrainRequest;
 import com.aliyun.openservices.aiservice.model.AIGCImageTrainResponse;
-import com.aliyun.openservices.aiservice.model.Response;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.Ignore;
@@ -30,7 +28,6 @@ import java.util.List;
 /**
  * API tests for AigcImagesApi
  */
-@Ignore
 public class AigcImagesApiTest {
 
     private  AigcImagesApi api ;
@@ -72,13 +69,18 @@ public class AigcImagesApiTest {
      *          if the Api call fails
      */
     @Test
-    public void aigcImagesCreateTest() throws Exception {
-        String modelId = "2ee7d8c6-199c-4e8b-95ca-170ffe096cf4";
-        String templateImage = "https://pai-aigc-photog-bj.oss-cn-beijing.aliyuncs.com/photog/user_weights/foto10/validation/global_step_Blue_1_100_0.jpg";
-        AIGCImageCreateResponse response = api.aigcImagesCreate(modelId, templateImage);
+    public void aigcImagesCreateTest()  {
+        try {
+            String modelId = "2ee7d8c6-199c-4e8b-95ca-170ffe096cf445";
+            String templateImage = "https://pai-aigc-photog-bj.oss-cn-beijing.aliyuncs.com/photog/user_weights/foto10/validation/global_step_Blue_1_100_0.jpg";
+            AIGCImageCreateResponse response = api.aigcImagesCreate(modelId, templateImage);
 
-        System.out.println(response);
-        System.out.println(response.getData().getImage());
+            System.out.println(response);
+            System.out.println(response.getData().getImage());
+
+        } catch (ApiException exception) {
+            System.out.println(exception.getResponseBody());
+        }
     }
     /**
      * aigc图像
