@@ -277,7 +277,7 @@ public class AigcImagesApi {
         
     }
     /**
-     * aigc预测
+     * AI 写真制作
      *
      * @param  modelId aigc图片训练返回的模型ID (required)
      * @param  templateImage 模板图片地址 (required)
@@ -287,6 +287,40 @@ public class AigcImagesApi {
      */
     public AIGCImageCreateResponse aigcImagesCreate(String modelId, String templateImage) throws ApiException {
         return aigcImagesCreate(modelId, templateImage, "", null);
+    }
+    /**
+     * AI 写真制作(多人)
+     *
+     * @param  modelIds aigc图片训练返回的模型ID (required)
+     * @param  templateImage 模板图片地址 (required)
+     *
+     * @return AIGCImageCreateResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public AIGCImageCreateResponse aigcImagesCreateByMultiModelIds(String[] modelIds, String templateImage) throws ApiException {
+        return this.aigcImagesCreateByMultiModelIds(modelIds, templateImage, "", null);
+    }
+
+    /**
+     * AI 写真制作(多人)
+     *
+     * @param  modelIds aigc图片训练返回的模型ID (required)
+     * @param  templateImage 模板图片地址 (required)
+     * @param  modelName 模型名称
+     * @param  config 模型配置
+     *
+     * @return AIGCImageCreateResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public AIGCImageCreateResponse aigcImagesCreateByMultiModelIds(String[] modelIds, String templateImage, String modelName, Map<String, Object> config) throws ApiException {
+        AIGCCreatRequest body = new AIGCCreatRequest();
+        body.setConfigure(config);
+        body.setAction("AIGCImageCreate");
+        body.setModelName(modelName);
+        body.setTemplateImage(templateImage);
+        body.setModelIds(modelIds);
+        ApiResponse<AIGCImageCreateResponse> resp = aigcImagesCreatePostWithHttpInfo(body);
+        return resp.getData();
     }
     /**
      * aigc预测
