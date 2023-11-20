@@ -3,7 +3,7 @@ AlibabaCloud PAI-AIService Java  SDK.
 
 English | [简体中文](./README_zh-CN.md)
 
-[Multi-Media Analysis Doc](https://www.alibabacloud.com/help/zh/pai/user-guide/multimedia-analysis)
+[Multi-Media Analysis Doc](https://www.alibabacloud.com/help/en/pai/user-guide/multimedia-analysis)
 
 [AI-Portraits](https://help.aliyun.com/zh/pai/user-guide/overview-of-ai-portraits?spm=a2c4g.11174283.0.0.34165e0fdiZgrH)
 
