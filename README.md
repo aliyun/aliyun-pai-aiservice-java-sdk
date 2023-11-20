@@ -1,11 +1,13 @@
 # aliyun-pai-aiservice-java-sdk 
-阿里云 PAI-AIService 服务的 java  SDK.
+AlibabaCloud PAI-AIService Java  SDK.
 
-[多媒体分析文档](https://help.aliyun.com/zh/pai/user-guide/multimedia-analysis?spm=a2c4g.11186623.0.0.31a419d5APYtKi)
+English | [简体中文](./README_zh-CN.md)
 
-[AI写真文档](https://help.aliyun.com/zh/pai/user-guide/overview-of-ai-portraits?spm=a2c4g.11174283.0.0.34165e0fdiZgrH)
+[Multi-Media Analysis Doc](https://www.alibabacloud.com/help/zh/pai/user-guide/multimedia-analysis)
 
-## 安装
+AI-Portraits
+
+## How to install
 
 ```
 <dependency>
@@ -16,12 +18,12 @@
 ```
 
 
-## 使用方式
+## How to use
 
-AI 写真训练，写真制作查看 [AIGCImageTest](src/test/java/com/aliyun/openservices/aiservice/api/AIGCImageTest.java)
+AI-Portraits Training Demo [AIGCImageTest](src/test/java/com/aliyun/openservices/aiservice/api/AIGCImageTest.java)
 
-AI 写真训练，制作相关接口查看 [AigcImagesApiTest](src/test/java/com/aliyun/openservices/aiservice/api/AigcImagesApiTest.java)
+AI-Portraits Producing Demo [AigcImagesApiTest](src/test/java/com/aliyun/openservices/aiservice/api/AigcImagesApiTest.java)
 
-多媒体分析图片接口查看  [AiServiceImageApiTest](src/test/java/com/aliyun/openservices/aiservice/api/AiServiceImageApiTest.java)
+Multi-Media Analysis Image Interface Demo [AiServiceImageApiTest](src/test/java/com/aliyun/openservices/aiservice/api/AiServiceImageApiTest.java)
 
-多媒体分析视频接口查看  [AiServiceVideoApiTest](src/test/java/com/aliyun/openservices/aiservice/api/AiServiceVideoApiTest.java)
+Multi-Media Analysis Video Interface Demo [AiServiceVideoApiTest](src/test/java/com/aliyun/openservices/aiservice/api/AiServiceVideoApiTest.java)
