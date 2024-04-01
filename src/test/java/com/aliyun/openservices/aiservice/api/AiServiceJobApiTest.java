@@ -17,7 +17,6 @@ import com.aliyun.openservices.aiservice.model.AsyncBatchJobData;
 import com.aliyun.openservices.aiservice.model.AsyncBatchJobResponse;
 import com.aliyun.openservices.aiservice.model.AsyncJobResponse;
 import com.aliyun.openservices.aiservice.model.AsyncJobState;
-import com.aliyun.openservices.aiservice.model.Response;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.Ignore;

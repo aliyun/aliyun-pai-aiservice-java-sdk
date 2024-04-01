@@ -13,7 +13,7 @@
 <dependency>
   <groupId>com.aliyun.openservices.aiservice</groupId>
   <artifactId>aiservice-sdk</artifactId>
-  <version>1.0.1</version>
+  <version>1.0.2</version>
 </dependency>
 ```
 
@@ -27,3 +27,8 @@ AI 写真训练，制作相关接口查看 [AigcImagesApiTest](src/test/java/com
 多媒体分析图片接口查看  [AiServiceImageApiTest](src/test/java/com/aliyun/openservices/aiservice/api/AiServiceImageApiTest.java)
 
 多媒体分析视频接口查看  [AiServiceVideoApiTest](src/test/java/com/aliyun/openservices/aiservice/api/AiServiceVideoApiTest.java)
+
+## 版本说明
+### 1.0.2 (2024-04-02)
+* 增加 LLM 裁判员模型
+
