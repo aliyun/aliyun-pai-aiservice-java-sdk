@@ -52,8 +52,7 @@ public class AigcImagesApiTest {
     @Test
     public void aigcImagesCheckTest() throws Exception {
         List<String> images =Arrays.asList("https://pai-aigc-photog-bj.oss-cn-beijing.aliyuncs.com/photog/user_images/foto/train/1.jpg",
-                "https://pai-aigc-photog-bj.oss-cn-beijing.aliyuncs.com/photog/user_images/foto/train/0.jpg",
-                "http://47.95.234.175/assets/8db2c2ada33a403351447a990aaa2cda.jpg");
+                "https://pai-aigc-photog-bj.oss-cn-beijing.aliyuncs.com/photog/user_images/foto/train/0.jpg");
 
         AIGCImageCheckResponse response = api.aigcImagesCheck(images);
 

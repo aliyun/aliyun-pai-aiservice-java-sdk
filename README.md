@@ -13,7 +13,7 @@ English | [简体中文](./README_zh-CN.md)
 <dependency>
   <groupId>com.aliyun.openservices.aiservice</groupId>
   <artifactId>aiservice-sdk</artifactId>
-  <version>1.0.1</version>
+  <version>1.0.2</version>
 </dependency>
 ```
 
