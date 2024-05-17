@@ -26,7 +26,7 @@ public class LLMEvalJudgerRequestMessages {
   private String role = null;
 
   @SerializedName("content")
-  private String content = null;
+  private Object content = null;
 
   public LLMEvalJudgerRequestMessages role(String role) {
     this.role = role;
@@ -56,14 +56,13 @@ public class LLMEvalJudgerRequestMessages {
    * @return content
   **/
   @Schema(example = "请介绍下你自己", description = "")
-  public String getContent() {
+  public Object getContent() {
     return content;
   }
 
-  public void setContent(String content) {
+  public void setContent(Object content) {
     this.content = content;
   }
-
 
   @Override
   public boolean equals(Object o) {
@@ -75,7 +74,8 @@ public class LLMEvalJudgerRequestMessages {
     }
     LLMEvalJudgerRequestMessages llMEvalJudgerRequestMessages = (LLMEvalJudgerRequestMessages) o;
     return Objects.equals(this.role, llMEvalJudgerRequestMessages.role) &&
-        Objects.equals(this.content, llMEvalJudgerRequestMessages.content);
+           Objects.equals(this.content, llMEvalJudgerRequestMessages.content)
+            ;
   }
 
   @Override

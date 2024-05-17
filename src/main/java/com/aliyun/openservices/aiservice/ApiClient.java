@@ -1064,7 +1064,7 @@ public class ApiClient {
     private String createSign(String path, String method, Object body, List<Pair> queryParams)  {
         String bodyBuffer = "";
         if (null != body) {
-            bodyBuffer  = new Gson().toJson(body);
+            bodyBuffer  = json.serialize(body);
         }
         String signStr = buildSignStr(path, method, bodyBuffer, queryParams);
 
