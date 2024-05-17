@@ -15,9 +15,9 @@ package com.aliyun.openservices.aiservice.api;
 
 import com.aliyun.openservices.aiservice.ApiCallback;
 import com.aliyun.openservices.aiservice.ApiClient;
-import com.aliyun.openservices.aiservice.Configuration;
 import com.aliyun.openservices.aiservice.ApiException;
 import com.aliyun.openservices.aiservice.ApiResponse;
+import com.aliyun.openservices.aiservice.Configuration;
 import com.aliyun.openservices.aiservice.Pair;
 import com.aliyun.openservices.aiservice.ProgressRequestBody;
 import com.aliyun.openservices.aiservice.ProgressResponseBody;
@@ -30,9 +30,6 @@ import com.aliyun.openservices.aiservice.model.Response;
 import com.google.gson.reflect.TypeToken;
 
 import java.io.IOException;
-
-
-
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -142,7 +139,15 @@ public class AiServiceLlmApi {
         List<LLMEvalJudgerRequestMessages>  messagesList = new ArrayList<>(chatCompletionRequest.getMessages().size());
 
         for (ChatCompletionMessage message : chatCompletionRequest.getMessages()) {
-            messagesList.add(new LLMEvalJudgerRequestMessages().role(message.getRole()).content(message.getContent()));
+            message.preprocessor();
+            LLMEvalJudgerRequestMessages llmEvalJudgerRequestMessages = new LLMEvalJudgerRequestMessages();
+            llmEvalJudgerRequestMessages.role(message.getRole());
+            if (message.getMultiContent() != null) {
+                llmEvalJudgerRequestMessages.setContent(message.getMultiContent());
+            } else if (message.getContent() != null) {
+                llmEvalJudgerRequestMessages.setContent(message.getContent());
+            }
+            messagesList.add(llmEvalJudgerRequestMessages);
         }
         llmEvalJudgerRequest.setMessages(messagesList);
 

@@ -12,6 +12,9 @@
 
 package com.aliyun.openservices.aiservice;
 
+import com.aliyun.openservices.aiservice.model.ChatMessagePart;
+import com.aliyun.openservices.aiservice.model.ChatMessagePartModeSerializer;
+import com.aliyun.openservices.aiservice.model.ChatMessagePartTypeSerializer;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonElement;
@@ -71,6 +74,8 @@ public class JSON {
             .registerTypeAdapter(java.sql.Date.class, sqlDateTypeAdapter)
             .registerTypeAdapter(OffsetDateTime.class, offsetDateTimeTypeAdapter)
             .registerTypeAdapter(LocalDate.class, localDateTypeAdapter)
+            .registerTypeAdapter(ChatMessagePart.ChatMessagePartType.class, new ChatMessagePartTypeSerializer())
+            .registerTypeAdapter(ChatMessagePart.ChatMessagePartMode.class, new ChatMessagePartModeSerializer())
             .create();
     }
 
