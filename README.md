@@ -13,7 +13,7 @@ English | [简体中文](./README_zh-CN.md)
 <dependency>
   <groupId>com.aliyun.openservices.aiservice</groupId>
   <artifactId>aiservice-sdk</artifactId>
-  <version>1.0.3</version>
+  <version>1.0.4</version>
 </dependency>
 ```
 
@@ -31,6 +31,9 @@ Multi-Media Analysis Video Interface Demo [AiServiceVideoApiTest](src/test/java/
 LLM-Eval Judger Interface Demo  [AiServiceLlmApiTest](src/test/java/com/aliyun/openservices/aiservice/api/AiServiceLlmApiTest.java)
 
 ## Release Notes
+### 1.0.4 (2024-05-31)
+* Adjusted the LLM judge model request format 
+ 
 ### 1.0.3 (2024-05-17)
 * Added Request Method for LLM Referee Model
  
