@@ -2,10 +2,7 @@ package com.aliyun.openservices.aiservice.api;
 
 import com.aliyun.openservices.aiservice.ApiClient;
 import com.aliyun.openservices.aiservice.model.ChatCompletionChoice;
-import com.aliyun.openservices.aiservice.model.ChatCompletionMessage;
-import com.aliyun.openservices.aiservice.model.ChatCompletionRequest;
 import com.aliyun.openservices.aiservice.model.ChatCompletionResponse;
-import com.aliyun.openservices.aiservice.model.ChatMessagePart;
 import com.aliyun.openservices.aiservice.model.LLMEvalJudgerResponse;
 import org.junit.Before;
 import org.junit.Ignore;
@@ -39,12 +36,24 @@ public class AiServiceLlmApiTest {
     @Test
     public void llmEvalJudgerTest() throws Exception {
 
-        ChatCompletionRequest chatCompletionRequest = new ChatCompletionRequest("Themis-1.0");
+        String requestBody = "[\n" +
+                "                {\n" +
+                "                    \"role\": \"user\",\n" +
+                "                    \"content\": [\n" +
+                "                        {\n" +
+                "                            \"mode\": \"pairwise\",\n" +
+                "                            \"type\": \"json\",\n" +
+                "                            \"json\": {\n" +
+                "                                \"question\": \"请介绍下你自己\",\n" +
+                "                                \"answer1\": \"我是一个人工智能助手，由 OpenAI 设计并开发，旨在帮助用户解答问题、提供信息、学习语言和执行各种语言处理任务。\",\n" +
+                "                                \"answer2\": \"我是一个人工智能助手，设计用来回答问题、提供信息、助力解决问题，并在不同的领域与场景中辅助用户。\"\n" +
+                "                            }\n" +
+                "                        }\n" +
+                "                    ]\n" +
+                "                }\n" +
+                "            ]";
 
-        chatCompletionRequest.addChatCompletionMessage(new ChatCompletionMessage().content("请介绍下你自己").role("user"));
-        chatCompletionRequest.addChatCompletionMessage(new ChatCompletionMessage().content("我是一个人工智能助手，由 OpenAI 设计并开发，旨在帮助用户解答问题、提供信息、学习语言和执行各种语言处理任务。作为 AI，我可以理解和生成自然语言文本，但与真实的人类助手或生物智能不同，我不拥有个人经历、情感或主观意识。我的知识是基于数据和预先训练的模型，并且我遵循特定的编程协议和道德指南来确保提供有用、准确和公正的信息。\\\\n我的功能包括但不限于：\\\\n回答一般知识问题\\\\n提供解释和定义\\\\n协助学习和教育\\\\n翻译语言\\\\n辅助编程和技术问题\\\\n提供建议和推荐\\\\n我在处理请求时不能进行个人化决策或提供个人建议，也不储存任何个人信息。我的目标是成为一个有益的资源，让用户更容易获取信息和解答。").role("assistant"));
-
-        LLMEvalJudgerResponse response = api.llmEvalJudger(chatCompletionRequest);
+        LLMEvalJudgerResponse response = api.create("Themis-1.0", requestBody);
 
         System.out.println(response);
 
@@ -58,21 +67,44 @@ public class AiServiceLlmApiTest {
     }
     @Test
     public void llmEvalJudgerMultiContentTest() throws Exception {
+        String requestBody = "[\n" +
+                "    {\n" +
+                "        \"role\": \"user\",\n" +
+                "        \"content\": [\n" +
+                "            {\n" +
+                "                \"type\": \"json\",\n" +
+                "                \"mode\": \"single\",\n" +
+                "                \"json\": {\n" +
+                "                    \"question\": \"评价一下2021年的暴雪游戏公司\",\n" +
+                "                    \"answer\": \"2021年对暴雪游戏公司来说是一个充满挑战和变化的一年。公司在这一年面临了一些负面的新闻和争议，比如员工抗议、性别歧视指控等，这些事件对公司声誉造成了一定影响。然而，暴雪游戏公司也在2021年发布了一些备受期待的游戏作品，比如《暗黑破坏神2：复仇》和《炉石传说》的新资料片等，这些作品受到了玩家们的欢迎和好评。总的来说，2021年对暴雪游戏公司来说是一个充满挑战和机遇并存的一年，希望他们能够在未来继续努力，重塑公司形象，为玩家们带来更多优秀的游戏作品。\"\n" +
+                "                }\n" +
+                "            }\n" +
+                "        ]\n" +
+                "    }\n" +
+                "]";
 
 
-        ChatCompletionMessage chatCompletionMessage = new ChatCompletionMessage();
+        LLMEvalJudgerResponse response = api.create("Themis-1.0", requestBody);
 
-        ChatMessagePart chatMessagePart = new ChatMessagePart();
-        chatMessagePart.setType(ChatMessagePart.ChatMessagePartType.JSON);
-        chatMessagePart.setMode(ChatMessagePart.ChatMessagePartMode.ChatMessagePartModeSingle);
-        chatMessagePart.getJson().question("请介绍下你自己").answer("我是一个人工智能助手，由 OpenAI 设计并开发，旨在帮助用户解答问题、提供信息、学习语言和执行各种语言处理任务。");
+        System.out.println(response);
 
-        chatCompletionMessage.role("user").addChatMessagePart(chatMessagePart);
+        ChatCompletionResponse chatCompletionResponse = response.getChatCompletionResponse();
+        System.out.println(chatCompletionResponse.getId());
+        System.out.println(chatCompletionResponse.getModel());
 
-        ChatCompletionRequest chatCompletionRequest = new ChatCompletionRequest("Themis-1.0");
-        chatCompletionRequest.addChatCompletionMessage(chatCompletionMessage);
+        for (ChatCompletionChoice chatCompletionChoice: chatCompletionResponse.getChoices()) {
+            System.out.println(chatCompletionChoice.getIndex() + ":" + chatCompletionChoice.getText());
+        }
+    }
+    @Test
+    public void llmEvalJudgerTest2() throws Exception {
+        String requestBody = "[\n" +
+                "                {\"role\": \"assistant\", \"content\": \"你是一个人工智能助手\"},\n" +
+                "                {\"role\": \"user\", \"content\": \"请介绍下你自己\"}\n" +
+                "            ]";
 
-        LLMEvalJudgerResponse response = api.llmEvalJudger(chatCompletionRequest);
+
+        LLMEvalJudgerResponse response = api.create("Themis-1.0", requestBody);
 
         System.out.println(response);
 
