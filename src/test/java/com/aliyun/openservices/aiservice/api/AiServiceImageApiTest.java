@@ -63,8 +63,32 @@ public class AiServiceImageApiTest {
     @Test
     public void multiLabelImageV2Test() throws Exception {
         String image = "https://pai-rec-public.oss-cn-shanghai.aliyuncs.com/ai-service/demo/face_chenglong.png";
-        Response response = api.multiLabelImageV2(image, "", null);
 
+        Response response = api.multiLabelImageV2(image);
+
+        System.out.println(response);
+
+        response = api.multiLabelImageV2(image, "", null);
+        System.out.println(response);
+    }
+
+    /**
+     * 图像质量打分
+     *
+     *
+     *
+     * @throws Exception
+     *          if the Api call fails
+     */
+    @Test
+    public void imageQATest() throws Exception {
+        String image = "https://pai-rec-public.oss-cn-shanghai.aliyuncs.com/ai-service/demo/face_chenglong.png";
+
+        Response response = api.imageQA(image);
+
+        System.out.println(response);
+
+        response = api.imageQA(image, "", null);
         System.out.println(response);
     }
     /**
