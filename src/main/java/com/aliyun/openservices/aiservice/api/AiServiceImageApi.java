@@ -144,6 +144,17 @@ public class AiServiceImageApi {
         ApiResponse<Response> resp = aiModelImageWithHttpInfo(body);
         return resp.getData();
     }
+    /**
+     * 图像打标
+     *
+     * @param image 图片地址，url or base64 encode image (required)
+     *
+     * @return Response
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public Response multiLabelImageV2(String image) throws ApiException {
+        return multiLabelImageV2(image, "", null);
+    }
 
     /**
      * 图像打标
@@ -158,6 +169,38 @@ public class AiServiceImageApi {
     public Response multiLabelImageV2(String image, String modelName, Map<String, Object> config) throws ApiException {
         ImageRequest body = new ImageRequest();
         body.setAction("MultiLabelImageV2");
+        body.setConfigure(config);
+        body.setImage(image);
+        body.setModelName(modelName);
+        ApiResponse<Response> resp = aiModelImageWithHttpInfo(body);
+        return resp.getData();
+    }
+
+    /**
+     * 图像质量评分
+     *
+     * @param image 图片地址，url or base64 encode image (required)
+     *
+     * @return Response
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public Response imageQA(String image) throws ApiException {
+        return imageQA(image, "", null);
+    }
+
+    /**
+     * 图像质量评分
+     *
+     * @param image 图片地址，url or base64 encode image (required)
+     * @param modelName 模型名称
+     * @param config 模型配置
+     *
+     * @return Response
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public Response imageQA(String image, String modelName, Map<String, Object> config) throws ApiException {
+        ImageRequest body = new ImageRequest();
+        body.setAction("ImageQA");
         body.setConfigure(config);
         body.setImage(image);
         body.setModelName(modelName);
